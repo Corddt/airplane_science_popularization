@@ -21,15 +21,40 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class FeiJiLeiXingServiceImpl implements FeiJiLeiXingService {
-    //注入飞机类型对象
     @Autowired(required = false)
     private FeiJiLeiXingMapper feiJiLeiXingMapper;
 
     @Override
     public PageResult selectFeiJiLeiXing(Integer pageNum, Integer pageSize) {
-        // 设置分页查询的参数，开始分页
         PageHelper.startPage(pageNum, pageSize);
-        Page<FeiJiLeiXing> page=feiJiLeiXingMapper.selectFeiJiLeiXing();
-        return new PageResult(page.getTotal(),page.getResult());
+        Page<FeiJiLeiXing> page = feiJiLeiXingMapper.selectFeiJiLeiXing();
+        return new PageResult(page.getTotal(), page.getResult());
+    }
+
+    @Override
+    public FeiJiLeiXing findById(String id) {
+        return feiJiLeiXingMapper.findById(id);
+    }
+
+    @Override
+    public Integer addFeiJiLeiXing(FeiJiLeiXing feiJiLeiXing) {
+        return feiJiLeiXingMapper.addFeiJiLeiXing(feiJiLeiXing);
+    }
+
+    @Override
+    public Integer editFeiJiLeiXing(FeiJiLeiXing feiJiLeiXing) {
+        return feiJiLeiXingMapper.editFeiJiLeiXing(feiJiLeiXing);
+    }
+
+    @Override
+    public Integer deleteFeiJiLeiXing(String id) {
+        return feiJiLeiXingMapper.deleteFeiJiLeiXing(id);
+    }
+
+    @Override
+    public PageResult searchFeiJiLeiXing(FeiJiLeiXing searchCriteria, Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        Page<FeiJiLeiXing> page = feiJiLeiXingMapper.searchFeiJiLeiXing(searchCriteria);
+        return new PageResult(page.getTotal(), page.getResult());
     }
 }

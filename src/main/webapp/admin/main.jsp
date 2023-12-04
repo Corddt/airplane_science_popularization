@@ -61,19 +61,19 @@
                         <i class="fa fa-dashboard"></i> <span>首页</span>
                     </a>
                 </li>
-                <li >
-                    <a href="${pageContext.request.contextPath}/feiji/feijileixing" target="iframe">
-                        <i class="fa fa-circle-o"></i>飞机类型
+                <li>
+                    <a href="${pageContext.request.contextPath}/feiji/selectFeiJiLeiXing" target="iframe">
+                        <i class="fa fa-circle-o"></i>飞机类型管理
                     </a>
                 </li>
                 <li>
                     <a href="${pageContext.request.contextPath}/book/searchBorrowed" target="iframe">
-                        <i class="fa fa-circle-o"></i>飞机详情
+                        <i class="fa fa-circle-o"></i>飞机详情管理
                     </a>
                 </li>
                 <li >
                     <a href="${pageContext.request.contextPath}/record/searchRecords" target="iframe">
-                        <i class="fa fa-circle-o"></i>飞机展示
+                        <i class="fa fa-circle-o"></i>飞机详情展示
                     </a>
                 </li>
             </ul>
@@ -83,8 +83,9 @@
     <!-- 导航侧栏 /-->
     <!-- 内容展示区域 -->
     <div class="content-wrapper">
+        <!-- iframe内容展示 -->
         <iframe width="100%" id="iframe" name="iframe" onload="SetIFrameHeight()"
-                frameborder="0" src="${pageContext.request.contextPath}/book/selectNewbooks"></iframe>
+                frameborder="0" src="${pageContext.request.contextPath}/feiji/feijimainpage"></iframe>
     </div>
 </div>
 </body>
