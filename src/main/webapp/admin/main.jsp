@@ -62,7 +62,7 @@
                     </a>
                 </li>
                 <li >
-                    <a href="${pageContext.request.contextPath}/book/search" target="iframe">
+                    <a href="${pageContext.request.contextPath}/feiji/feijileixing" target="iframe">
                         <i class="fa fa-circle-o"></i>飞机类型
                     </a>
                 </li>
