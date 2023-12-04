@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>云借阅-图书管理系统</title>
+    <title>飞机科普</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/AdminLTE.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/_all-skins.min.css">
@@ -25,7 +25,7 @@
     <header class="main-header">
         <!-- Logo -->
         <a href="${pageContext.request.contextPath}/admin/main.jsp" class="logo">
-            <span class="logo-lg"><b>云借阅-图书管理系统</b></span>
+            <span class="logo-lg"><b>飞机科普网站</b></span>
         </a>
         <!-- 头部导航 -->
         <nav class="navbar navbar-static-top">
@@ -63,17 +63,17 @@
                 </li>
                 <li >
                     <a href="${pageContext.request.contextPath}/book/search" target="iframe">
-                        <i class="fa fa-circle-o"></i>图书借阅
+                        <i class="fa fa-circle-o"></i>飞机类型
                     </a>
                 </li>
                 <li>
                     <a href="${pageContext.request.contextPath}/book/searchBorrowed" target="iframe">
-                        <i class="fa fa-circle-o"></i>当前借阅
+                        <i class="fa fa-circle-o"></i>飞机详情
                     </a>
                 </li>
                 <li >
                     <a href="${pageContext.request.contextPath}/record/searchRecords" target="iframe">
-                        <i class="fa fa-circle-o"></i>借阅记录
+                        <i class="fa fa-circle-o"></i>飞机展示
                     </a>
                 </li>
             </ul>
