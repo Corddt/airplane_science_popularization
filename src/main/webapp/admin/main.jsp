@@ -67,7 +67,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/book/searchBorrowed" target="iframe">
+                    <a href="${pageContext.request.contextPath}/feiji/selectFeiJiXiangQing" target="iframe">
                         <i class="fa fa-circle-o"></i>飞机详情管理
                     </a>
                 </li>
