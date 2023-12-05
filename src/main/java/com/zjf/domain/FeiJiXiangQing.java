@@ -72,4 +72,17 @@ public class FeiJiXiangQing {
     public void setShiyongnianxian(String shiyongnianxian) {
         this.shiyongnianxian = shiyongnianxian;
     }
+
+    @Override
+    public String toString() {
+        return "FeiJiXiangQing{" +
+                "xiangqingid=" + xiangqingid +
+                ", leixingid=" + leixingid +
+                ", mingcheng='" + mingcheng + '\'' +
+                ", jianjie='" + jianjie + '\'' +
+                ", tupian='" + tupian + '\'' +
+                ", zhizaoshang='" + zhizaoshang + '\'' +
+                ", shiyongnianxian='" + shiyongnianxian + '\'' +
+                '}';
+    }
 }

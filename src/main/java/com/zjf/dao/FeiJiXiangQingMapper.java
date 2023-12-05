@@ -4,6 +4,8 @@ import com.github.pagehelper.Page;
 import com.zjf.domain.FeiJiXiangQing;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 public interface FeiJiXiangQingMapper {
 
     @Select("SELECT * FROM feijixiangqing")
@@ -45,5 +47,8 @@ public interface FeiJiXiangQingMapper {
             "</script>")
     @ResultMap("feijixiangqingMap")
     Page<FeiJiXiangQing> searchFeiJiXiangQing(FeiJiXiangQing feiJiXiangQing);
+
+    @Select("SELECT * FROM feijixiangqing")
+    List<FeiJiXiangQing> selectAll();
 
 }

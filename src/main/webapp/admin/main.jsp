@@ -71,8 +71,8 @@
                         <i class="fa fa-circle-o"></i>飞机详情管理
                     </a>
                 </li>
-                <li >
-                    <a href="${pageContext.request.contextPath}/record/searchRecords" target="iframe">
+                <li>
+                    <a href="${pageContext.request.contextPath}/feiji/feijixiangqingList" target="iframe">
                         <i class="fa fa-circle-o"></i>飞机详情展示
                     </a>
                 </li>

@@ -9,11 +9,14 @@ import com.zjf.service.FeiJiXiangQingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
+
 /**
  * 名称:FeiJiController
  * 描述:
@@ -83,6 +86,7 @@ public class FeiJiController {
     public Result addFeiJiLeiXing(FeiJiLeiXing feiJiLeiXing) {
         try {
             Integer count = feiJiLeiXingService.addFeiJiLeiXing(feiJiLeiXing);
+            System.out.println("这是添加飞机类型的方法,count的值是："+count);
             if (count != 1) {
                 return new Result(false, "添加失败！");
             }
@@ -99,9 +103,12 @@ public class FeiJiController {
     public Result editFeiJiLeiXing(FeiJiLeiXing feiJiLeiXing) {
         try {
             Integer count = feiJiLeiXingService.editFeiJiLeiXing(feiJiLeiXing);
+            System.out.println(count);
             if (count != 1) {
+                System.out.println("编辑失败！");
                 return new Result(false, "编辑失败！");
             }
+            System.out.println("编辑成功！");
             return new Result(true, "编辑成功！");
         } catch (Exception e) {
             e.printStackTrace();
@@ -178,6 +185,7 @@ public class FeiJiController {
     public Result addFeiJiXiangQing(FeiJiXiangQing feiJiXiangQing) {
         try {
             Integer count = feiJiXiangQingService.addFeiJiXiangQing(feiJiXiangQing);
+            System.out.println("这是添加飞机详情的方法,count的值是："+count);
             if (count != 1) {
                 return new Result(false, "添加失败！");
             }
@@ -194,6 +202,7 @@ public class FeiJiController {
     public Result editFeiJiXiangQing(FeiJiXiangQing feiJiXiangQing) {
         try {
             Integer count = feiJiXiangQingService.editFeiJiXiangQing(feiJiXiangQing);
+            System.out.println("这是编辑飞机详情的方法,count的值是："+count);
             if (count != 1) {
                 return new Result(false, "编辑失败！");
             }
@@ -227,5 +236,25 @@ public class FeiJiController {
         modelAndView.setViewName("feijimain_web");
         return modelAndView;
     }
+
+    @RequestMapping("/feijixiangqingList")
+    public ModelAndView feijiXiangQingList() {
+        List<FeiJiXiangQing> feijixiangqingList = feiJiXiangQingService.findAll();
+        System.out.println("这是飞机详情的方法,feijixiangqingList的值是："+feijixiangqingList);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("feijixiangqingList", feijixiangqingList);
+        modelAndView.setViewName("feijixiangqing_list");
+        return modelAndView;
+    }
+
+    @RequestMapping("/feijixiangqingDetail")
+    public ModelAndView feijiXiangQingDetail(@RequestParam("id") String id) {
+        FeiJiXiangQing feijixiangqing = feiJiXiangQingService.findById(id);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("feijixiangqing", feijixiangqing);
+        modelAndView.setViewName("feijixiangqing_detail");
+        return modelAndView;
+    }
+
 
 }

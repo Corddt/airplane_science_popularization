@@ -28,7 +28,8 @@ public class SpringMvcConfig  implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor( resourcesInterceptor()).addPathPatterns("/**").excludePathPatterns("/css/**","/js/**","/img/**");
+//        registry.addInterceptor( resourcesInterceptor()).addPathPatterns("/**").excludePathPatterns("/css/**","/js/**","/img/**");
+        registry.addInterceptor( resourcesInterceptor()).excludePathPatterns("/**");
     }
 
     /*

@@ -20,6 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class FeiJiXiangQingServiceImpl implements FeiJiXiangQingService {
@@ -58,5 +60,10 @@ public class FeiJiXiangQingServiceImpl implements FeiJiXiangQingService {
         PageHelper.startPage(pageNum, pageSize);
         Page<FeiJiXiangQing> page = feiJiXiangQingMapper.searchFeiJiXiangQing(searchCriteria);
         return new PageResult(page.getTotal(), page.getResult());
+    }
+
+    @Override
+    public List<FeiJiXiangQing> findAll() {
+        return feiJiXiangQingMapper.selectAll();
     }
 }

@@ -54,7 +54,7 @@ function resetDetailForm() {
 
 // 查询id对应的飞机详情信息，并将信息回显到编辑窗口中
 function findDetailById(id) {
-    var url = getProjectPath() + "/feiji/findDetailById?id=" + id;
+    var url = getProjectPath() + "/feiji/findXiangQingById?id=" + id;
     $.get(url, function (response) {
         if (response.success) {
             $("#xiangqingid").val(response.data.xiangqingid);

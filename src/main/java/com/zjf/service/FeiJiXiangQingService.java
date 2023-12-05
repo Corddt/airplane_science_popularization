@@ -3,6 +3,9 @@ package com.zjf.service;
 import com.zjf.domain.FeiJiXiangQing;
 import com.zjf.entity.PageResult;
 
+import java.util.List;
+
+
 public interface FeiJiXiangQingService {
     PageResult selectFeiJiXiangQing(Integer pageNum, Integer pageSize);
     FeiJiXiangQing findById(String id);
@@ -10,4 +13,5 @@ public interface FeiJiXiangQingService {
     Integer editFeiJiXiangQing(FeiJiXiangQing feiJiXiangQing);
     Integer deleteFeiJiXiangQing(String id);
     PageResult searchFeiJiXiangQing(FeiJiXiangQing searchCriteria, Integer pageNum, Integer pageSize);
+    List<FeiJiXiangQing> findAll();
 }
