@@ -27,20 +27,18 @@
 <div class="box-body">
     <!-- 新增按钮 -->
     <c:if test="${USER_SESSION.role =='ADMIN'}">
-    <div class="pull-left">
-        <div class="form-group form-inline">
-            <div class="btn-group">
-                <button type="button" class="btn btn-default" title="新建" data-toggle="modal"
-                        data-target="#addOrEditDetailModal"> 新增
-                </button>
+        <div class="pull-left">
+            <div class="form-group form-inline">
+                <div class="btn-group">
+                    <a href="${pageContext.request.contextPath}/admin/add_feijixiangqing.jsp" class="btn btn-default" title="新建">新增</a>
+                </div>
             </div>
         </div>
-    </div>
     </c:if>
     <!-- 工具栏 数据搜索 -->
     <div class="box-tools pull-right">
         <div class="has-feedback">
-            <form action="${pageContext.request.contextPath}/feiji/searchFeiJiXiangQing" method="post">
+            <form action="${pageContext.request.contextPath}/feijixiangqing/searchFeiJiXiangQing" method="post">
                 名称：<input name="mingcheng" value="${search.mingcheng}">&nbsp;&nbsp;&nbsp;
                 <input class="btn btn-default" type="submit" value="查询">
             </form>
@@ -74,21 +72,16 @@
                     <td>${FeiJiXiangQing.zhizaoshang}</td>
                     <td>${FeiJiXiangQing.shiyongnianxian}</td>
                     <td class="text-center">
-                        <button type="button" class="btn bg-olive btn-xs" data-toggle="modal"
-                                data-target="#addOrEditDetailModal" onclick="findDetailById(${FeiJiXiangQing.xiangqingid},'edit')"> 编辑
-                        </button>
-                        <button type="button" class="btn btn-danger btn-xs" onclick="deleteDetail(${FeiJiXiangQing.xiangqingid})"> 删除
-                        </button>
+                        <a href="${pageContext.request.contextPath}/feiji/editFeiJiXiangQingPage?id=${FeiJiXiangQing.xiangqingid}" class="btn bg-olive btn-xs">编辑</a>
+                        <button type="button" class="btn btn-danger btn-xs" onclick="deleteDetail(${FeiJiXiangQing.xiangqingid})">删除</button>
                     </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
-        <!-- 数据表格 /-->
         <!-- 分页插件 -->
         <div id="pagination" class="pagination"></div>
     </div>
-    <!-- 引入模态窗口的JSP文件 -->
-    <jsp:include page="/admin/feijixiangqing_modal.jsp"></jsp:include>
+</div>
 </body>
 </html>

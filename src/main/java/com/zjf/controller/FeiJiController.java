@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -80,42 +81,52 @@ public class FeiJiController {
         }
     }
 
-    // 添加飞机类型
-    @ResponseBody
     @RequestMapping("/addFeiJiLeiXing")
-    public Result addFeiJiLeiXing(FeiJiLeiXing feiJiLeiXing) {
+    public String addFeiJiLeiXing(FeiJiLeiXing feiJiLeiXing, HttpServletRequest request) {
         try {
             Integer count = feiJiLeiXingService.addFeiJiLeiXing(feiJiLeiXing);
-            System.out.println("这是添加飞机类型的方法,count的值是："+count);
             if (count != 1) {
-                return new Result(false, "添加失败！");
+                request.getSession().setAttribute("message", "添加失败！");
+            } else {
+                request.getSession().setAttribute("message", "添加成功！");
             }
-            return new Result(true, "添加成功！");
         } catch (Exception e) {
-            e.printStackTrace();
-            return new Result(false, "添加失败！");
+            request.getSession().setAttribute("message", "添加失败！");
         }
+        return "redirect:/feiji/selectFeiJiLeiXing";
     }
 
-    // 编辑飞机类型
-    @ResponseBody
     @RequestMapping("/editFeiJiLeiXing")
-    public Result editFeiJiLeiXing(FeiJiLeiXing feiJiLeiXing) {
+    public String editFeiJiLeiXing(FeiJiLeiXing feiJiLeiXing, HttpServletRequest request) {
         try {
             Integer count = feiJiLeiXingService.editFeiJiLeiXing(feiJiLeiXing);
-            System.out.println(count);
             if (count != 1) {
-                System.out.println("编辑失败！");
-                return new Result(false, "编辑失败！");
+                request.getSession().setAttribute("message", "编辑失败！");
+            } else {
+                request.getSession().setAttribute("message", "编辑成功！");
             }
-            System.out.println("编辑成功！");
-            return new Result(true, "编辑成功！");
         } catch (Exception e) {
-            e.printStackTrace();
-            return new Result(false, "编辑失败！");
+            request.getSession().setAttribute("message", "编辑失败！");
         }
+        return "redirect:/feiji/selectFeiJiLeiXing";
     }
 
+
+    // 跳转到添加飞机类型的页面
+    @RequestMapping("/addFeiJiLeiXingPage")
+    public String addFeiJiLeiXingPage() {
+        return "add_feijileixing"; // 跳转到 add_feijileixing.jsp 页面
+    }
+
+    // 跳转到编辑飞机类型的页面
+    @RequestMapping("/editFeiJiLeiXingPage")
+    public ModelAndView editFeiJiLeiXingPage(@RequestParam("leixingid") String leixingid) {
+        FeiJiLeiXing feiJiLeiXing = feiJiLeiXingService.findById(leixingid);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("FeiJiLeiXing", feiJiLeiXing);
+        modelAndView.setViewName("edit_feijileixing"); // 跳转到 edit_feijileixing.jsp 页面
+        return modelAndView;
+    }
     // 删除飞机类型
     @ResponseBody
     @RequestMapping("/deleteFeiJiLeiXing")
@@ -212,6 +223,29 @@ public class FeiJiController {
             return new Result(false, "编辑失败！");
         }
     }
+
+    // 添加飞机详情的页面
+    @RequestMapping("/addFeiJiXiangQingPage")
+    public ModelAndView addFeiJiXiangQingPage() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("add_feijixiangqing");
+        return modelAndView;
+    }
+
+    @RequestMapping("/editFeiJiXiangQingPage")
+    public ModelAndView editFeiJiXiangQingPage(@RequestParam("id") String id) {
+        System.out.println("编辑飞机详情的ID: " + id); // 日志输出
+
+        FeiJiXiangQing feijixiangqing = feiJiXiangQingService.findById(id);
+        System.out.println("获取到的飞机详情: " + feijixiangqing); // 日志输出
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("FeiJiXiangQing", feijixiangqing);
+        modelAndView.setViewName("edit_feijixiangqing");
+        return modelAndView;
+    }
+
+
 
     // 删除飞机详情
     @ResponseBody
