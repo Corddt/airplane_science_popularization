@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 86153
-  Date: 2023/12/4
-  Time: 10:06
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -18,62 +11,21 @@
     <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
     <script src="${pageContext.request.contextPath}/js/pagination.js"></script>
     <script src="${pageContext.request.contextPath}/js/feiji.js"></script>
+
     <script>
         $(document).ready(function() {
+            // 消息弹窗
             <% if (session.getAttribute("message") != null) { %>
             alert("<%= session.getAttribute("message") %>");
             <% session.removeAttribute("message"); %>
             <% } %>
-        });
     </script>
-    <script>
-        $(document).ready(function() {
-            var totalRecords = ${pageResult.total}; // 总记录数
-            var pageSize = ${pageSize}; // 每页显示的记录数
-            var totalPages = Math.ceil(totalRecords / pageSize); // 总页数，向上取整
-            var currentPage = ${pageNum}; // 当前页码
-            var baseUrl = "${pageContext.request.contextPath}/feiji/selectFeiJiLeiXing?pageNum="; // 基础URL
-
-            // 构建“上一页”按钮
-            var prevPage = currentPage - 1;
-            if (prevPage < 1) {
-                $('#pagination').append('<span class="btn btn-sm btn-default disabled">上一页</span>');
-            } else {
-                $('#pagination').append('<a href="' + baseUrl + prevPage + '" class="btn btn-sm btn-default">上一页</a>');
-            }
-
-            // 构建分页按钮
-            for (var i = 1; i <= totalPages; i++) {
-                var btn = $('<a>').text(i).attr('href', baseUrl + i).addClass('btn btn-sm');
-                if (i === currentPage) {
-                    btn.addClass('btn-primary'); // 当前页高亮
-                } else {
-                    btn.addClass('btn-default');
-                }
-                $('#pagination').append(btn);
-            }
-
-            // 构建“下一页”按钮
-            var nextPage = currentPage + 1;
-            if (nextPage > totalPages) {
-                $('#pagination').append('<span class="btn btn-sm btn-default disabled">下一页</span>');
-            } else {
-                $('#pagination').append('<a href="' + baseUrl + nextPage + '" class="btn btn-sm btn-default">下一页</a>');
-            }
-        });
-    </script>
-
-
-
-
-
 </head>
 <body class="hold-transition skin-red sidebar-mini">
 <div class="box-header with-border">
     <h3 class="box-title">飞机类型管理</h3>
 </div>
 <div class="box-body">
-    <!-- 新增按钮 -->
     <c:if test="${USER_SESSION.role =='ADMIN'}">
         <div class="pull-left">
             <div class="form-group form-inline">
@@ -83,7 +35,6 @@
             </div>
         </div>
     </c:if>
-    <!-- 工具栏 数据搜索 -->
     <div class="box-tools pull-right">
         <div class="has-feedback">
             <form action="${pageContext.request.contextPath}/feiji/searchFeiJiLeiXing" method="post">
@@ -92,10 +43,7 @@
             </form>
         </div>
     </div>
-
-    <!-- 数据列表 -->
     <div class="table-box">
-        <!-- 数据表格 -->
         <table id="dataList" class="table table-bordered table-striped table-hover dataTable text-center">
             <thead>
             <tr>
@@ -119,9 +67,42 @@
             </c:forEach>
             </tbody>
         </table>
-        <!-- 数据表格 /-->
-        <!-- 分页插件 -->
-        <div id="pagination" class="pagination"></div>
+        <div id="pagination" class="pagination">
+            <c:choose>
+                <c:when test="${pageNum > 1}">
+                    <!-- 上一页链接 -->
+                    <a href="${pageContext.request.contextPath}/feiji/selectFeiJiLeiXing?pageNum=${pageNum - 1}" class="btn btn-sm btn-default">上一页</a>
+                </c:when>
+                <c:otherwise>
+                    <!-- 上一页禁用 -->
+                    <span class="btn btn-sm btn-default disabled">上一页</span>
+                </c:otherwise>
+            </c:choose>
+
+            <!-- 动态生成页面链接 -->
+            <c:forEach begin="1" end="${totalPages}" var="i">
+                <c:choose>
+                    <c:when test="${i == pageNum}">
+                        <span class="btn btn-sm btn-primary">${i}</span>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="${pageContext.request.contextPath}/feiji/selectFeiJiLeiXing?pageNum=${i}" class="btn btn-sm btn-default">${i}</a>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+
+            <c:choose>
+                <c:when test="${pageNum < totalPages}">
+                    <!-- 下一页链接 -->
+                    <a href="${pageContext.request.contextPath}/feiji/selectFeiJiLeiXing?pageNum=${pageNum + 1}" class="btn btn-sm btn-default">下一页</a>
+                </c:when>
+                <c:otherwise>
+                    <!-- 下一页禁用 -->
+                    <span class="btn btn-sm btn-default disabled">下一页</span>
+                </c:otherwise>
+            </c:choose>
+        </div>
+    </div>
     </div>
 </div>
 </body>
