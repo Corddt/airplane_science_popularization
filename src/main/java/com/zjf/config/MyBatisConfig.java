@@ -12,14 +12,14 @@ import java.util.Properties;
 
 public class MyBatisConfig {
     /**配置PageInterceptor分页插件*/
-//    @Bean
-//    public PageInterceptor getPageInterceptor() {
-//        PageInterceptor pageIntercptor = new PageInterceptor();
-//        Properties properties = new Properties();
-//        properties.setProperty("value", "true");
-//        pageIntercptor.setProperties(properties);
-//        return pageIntercptor;
-//    }
+    @Bean
+    public PageInterceptor getPageInterceptor() {
+        PageInterceptor pageIntercptor = new PageInterceptor();
+        Properties properties = new Properties();
+        properties.setProperty("value", "true");
+        pageIntercptor.setProperties(properties);
+        return pageIntercptor;
+    }
     /*
     定义MyBatis的核心连接工厂bean，
     等同于<bean class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -27,12 +27,12 @@ public class MyBatisConfig {
     为set注入提供数据源，dataSource来源于JdbcConfig中的配置
      */
     @Bean
-    public SqlSessionFactoryBean getSqlSessionFactoryBean(@Autowired DataSource dataSource/*,@Autowired PageInterceptor pageIntercptor*/){
+    public SqlSessionFactoryBean getSqlSessionFactoryBean(@Autowired DataSource dataSource,@Autowired PageInterceptor pageIntercptor){
         SqlSessionFactoryBean ssfb = new SqlSessionFactoryBean();
         //等同于<property name="dataSource" ref="dataSource"/>
         ssfb.setDataSource(dataSource);
-//        Interceptor[] plugins={pageIntercptor};
-//        ssfb.setPlugins(plugins);
+        Interceptor[] plugins={pageIntercptor};
+        ssfb.setPlugins(plugins);
         return ssfb;
     }
     /*
