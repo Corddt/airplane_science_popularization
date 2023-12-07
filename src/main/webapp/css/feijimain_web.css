@@ -1,38 +1,27 @@
-/* CSS for feijimain_web.jsp */
-
-body {
-    font-family: Arial, sans-serif;
+.horizontal-nav {
+    list-style-type: none;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-}
-
-.container {
-    width: 80%;
-    margin: auto;
     overflow: hidden;
+    background-color: #333;
 }
 
-h1 {
-    color: #333;
+.horizontal-nav li {
+    float: left;
+}
+
+.horizontal-nav li a {
+    display: block;
+    color: white;
     text-align: center;
-    padding: 20px 0;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 
-h2 {
-    color: #333;
-    margin-top: 20px;
+.horizontal-nav li a:hover {
+    background-color: #111;
 }
 
-p {
-    font-size: 16px;
-    line-height: 1.6;
+.user-image {
+    border-radius: 50%;
 }
-
-img {
-    width: 100%;
-    height: auto;
-    margin-top: 20px;
-}
-

@@ -4,11 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>飞机类型管理</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/AdminLTE.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pagination.css">
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
     <script src="${pageContext.request.contextPath}/js/pagination.js"></script>
     <script src="${pageContext.request.contextPath}/js/feiji.js"></script>
 
@@ -19,6 +16,7 @@
             alert("<%= session.getAttribute("message") %>");
             <% session.removeAttribute("message"); %>
             <% } %>
+        });
     </script>
 </head>
 <body class="hold-transition skin-red sidebar-mini">
@@ -40,6 +38,7 @@
             <form action="${pageContext.request.contextPath}/feiji/searchFeiJiLeiXing" method="post">
                 类型名称：<input name="leixingmingcheng" value="${search.leixingmingcheng}">&nbsp;&nbsp;&nbsp;
                 <input class="btn btn-default" type="submit" value="查询">
+                <a href="${pageContext.request.contextPath}/admin/main.jsp" class="btn btn-default">返回主页</a>
             </form>
         </div>
     </div>

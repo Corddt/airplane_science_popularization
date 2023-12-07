@@ -12,16 +12,15 @@
     <meta charset="utf-8">
     <title>飞机详情列表</title>
     <!-- 引入CSS和JS文件 -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/AdminLTE.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pagination.css">
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 </head>
 <body class="hold-transition skin-red sidebar-mini">
 <div class="box-header with-border">
     <h3 class="box-title">飞机详情列表</h3>
 </div>
+<a href="${pageContext.request.contextPath}/admin/main.jsp" class="btn btn-default">返回主页</a>
+
 <div class="box-body">
     <!-- 数据列表 -->
     <div class="table-box">

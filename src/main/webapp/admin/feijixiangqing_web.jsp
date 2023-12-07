@@ -20,7 +20,6 @@
         }
         .table-box {
             margin: 20px;
-            overflow-x: auto; /* 水平滚动 */
         }
         table {
             width: 100%;
@@ -36,13 +35,19 @@
         }
     </style>
     <!-- 引入CSS和JS文件 -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/AdminLTE.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pagination.css">
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
     <script src="${pageContext.request.contextPath}/js/pagination.js"></script>
     <script src="${pageContext.request.contextPath}/js/feiji.js"></script> <!-- 添加您的飞机详情管理脚本 -->
+    <script>
+        $(document).ready(function() {
+            // 消息弹窗
+            <% if (session.getAttribute("message") != null) { %>
+            alert("<%= session.getAttribute("message") %>");
+            <% session.removeAttribute("message"); %>
+            <% } %>
+        });
+    </script>
 </head>
 <body class="hold-transition skin-red sidebar-mini">
 <div class="box-header with-border">
@@ -65,6 +70,7 @@
             <form action="${pageContext.request.contextPath}/feijixiangqing/searchFeiJiXiangQing" method="post">
                 名称：<input name="mingcheng" value="${search.mingcheng}">&nbsp;&nbsp;&nbsp;
                 <input class="btn btn-default" type="submit" value="查询">
+                <a href="${pageContext.request.contextPath}/admin/main.jsp" class="btn btn-default">返回主页</a>
             </form>
         </div>
     </div>
@@ -79,7 +85,6 @@
                 <th class="sorting">类型ID</th>
                 <th class="sorting">名称</th>
                 <th class="sorting">简介</th>
-                <th class="sorting">图片</th>
                 <th class="sorting">制造商</th>
                 <th class="sorting">使用年限</th>
                 <th class="text-center">操作</th>
@@ -92,7 +97,6 @@
                     <td>${FeiJiXiangQing.leixingid}</td>
                     <td>${FeiJiXiangQing.mingcheng}</td>
                     <td>${FeiJiXiangQing.jianjie}</td>
-                    <td>${FeiJiXiangQing.tupian}</td>
                     <td>${FeiJiXiangQing.zhizaoshang}</td>
                     <td>${FeiJiXiangQing.shiyongnianxian}</td>
                     <td class="text-center">
@@ -104,7 +108,41 @@
             </tbody>
         </table>
         <!-- 分页插件 -->
-        <div id="pagination" class="pagination"></div>
+        <div id="pagination" class="pagination">
+            <c:choose>
+                <c:when test="${pageNum > 1}">
+                    <!-- 上一页链接 -->
+                    <a href="${pageContext.request.contextPath}/feiji/selectFeiJiXiangQing?pageNum=${pageNum - 1}" class="btn btn-sm btn-default">上一页</a>
+                </c:when>
+                <c:otherwise>
+                    <!-- 上一页禁用 -->
+                    <span class="btn btn-sm btn-default disabled">上一页</span>
+                </c:otherwise>
+            </c:choose>
+
+            <!-- 动态生成页面链接 -->
+            <c:forEach begin="1" end="${totalPages}" var="i">
+                <c:choose>
+                    <c:when test="${i == pageNum}">
+                        <span class="btn btn-sm btn-primary">${i}</span>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="${pageContext.request.contextPath}/feiji/selectFeiJiXiangQing?pageNum=${i}" class="btn btn-sm btn-default">${i}</a>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+
+            <c:choose>
+                <c:when test="${pageNum < totalPages}">
+                    <!-- 下一页链接 -->
+                    <a href="${pageContext.request.contextPath}/feiji/selectFeiJiXiangQing?pageNum=${pageNum + 1}" class="btn btn-sm btn-default">下一页</a>
+                </c:when>
+                <c:otherwise>
+                    <!-- 下一页禁用 -->
+                    <span class="btn btn-sm btn-default disabled">下一页</span>
+                </c:otherwise>
+            </c:choose>
+        </div>
     </div>
 </div>
 </body>

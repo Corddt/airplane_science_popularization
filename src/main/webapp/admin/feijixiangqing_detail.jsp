@@ -11,11 +11,12 @@
 <html>
 <head>
     <title>飞机详情</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
 </head>
 <body>
 <div class="container">
     <h2>飞机详情</h2>
+    <a href="${pageContext.request.contextPath}/admin/main.jsp" class="btn btn-default">返回主页</a>
+    <a href="${pageContext.request.contextPath}/feiji/feijixiangqingList" class="btn btn-default">返回飞机详情列表</a>
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">${feijixiangqing.mingcheng}</h4>

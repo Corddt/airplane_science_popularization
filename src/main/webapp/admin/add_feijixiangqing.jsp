@@ -11,9 +11,7 @@
     <meta charset="utf-8">
     <title>添加飞机详情</title>
     <!-- 引入CSS和JS文件 -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 </head>
 <body>
 <div class="container">

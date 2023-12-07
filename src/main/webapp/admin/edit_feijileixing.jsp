@@ -11,9 +11,7 @@
 <head>
     <meta charset="utf-8">
     <title>编辑飞机类型</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 </head>
 <body>
 <c:url var="editActionUrl" value="/feiji/editFeiJiLeiXing"/>

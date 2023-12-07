@@ -154,14 +154,21 @@ public class FeiJiController {
     // 分页查询飞机详情
     @RequestMapping("/selectFeiJiXiangQing")
     public ModelAndView selectFeiJiXiangQing(Integer pageNum, Integer pageSize, HttpServletRequest request) {
-        if (pageNum == null) pageNum = 1;
-        if (pageSize == null) pageSize = 10;
+        if (pageNum == null || pageNum < 1) pageNum = 1; // 确保pageNum不小于1
+        if (pageSize == null || pageSize < 1) pageSize = 10; // 确保pageSize有默认值
 
         PageResult pageResult = feiJiXiangQingService.selectFeiJiXiangQing(pageNum, pageSize);
+        long total = pageResult.getTotal(); // 总记录数
+        long totalPages = (total + pageSize - 1) / pageSize; // 计算总页数
+
+        // 确保pageNum不大于总页数
+        pageNum = Math.toIntExact(Math.min(pageNum, totalPages));
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("feijixiangqing_web");
         modelAndView.addObject("pageResult", pageResult);
         modelAndView.addObject("pageNum", pageNum);
+        modelAndView.addObject("totalPages", totalPages); // 添加总页数
         modelAndView.addObject("gourl", request.getRequestURI());
         return modelAndView;
     }
@@ -198,38 +205,55 @@ public class FeiJiController {
         }
     }
 
-    // 添加飞机详情
-    @ResponseBody
+//    // 添加飞机详情
+//    @ResponseBody
+//    @RequestMapping("/addFeiJiXiangQing")
+//    public Result addFeiJiXiangQing(FeiJiXiangQing feiJiXiangQing) {
+//        try {
+//            Integer count = feiJiXiangQingService.addFeiJiXiangQing(feiJiXiangQing);
+//            System.out.println("这是添加飞机详情的方法,count的值是："+count);
+//            if (count != 1) {
+//                return new Result(false, "添加失败！");
+//            }
+//            return new Result(true, "添加成功！");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return new Result(false, "添加失败！");
+//        }
+//    }
+    //添加飞机详情
     @RequestMapping("/addFeiJiXiangQing")
-    public Result addFeiJiXiangQing(FeiJiXiangQing feiJiXiangQing) {
+    public String addFeiJiXiangQing(FeiJiXiangQing feiJiXiangqing, HttpServletRequest request) {
         try {
-            Integer count = feiJiXiangQingService.addFeiJiXiangQing(feiJiXiangQing);
-            System.out.println("这是添加飞机详情的方法,count的值是："+count);
+            Integer count = feiJiXiangQingService.addFeiJiXiangQing(feiJiXiangqing);
             if (count != 1) {
-                return new Result(false, "添加失败！");
+                request.getSession().setAttribute("message", "添加失败！");
+            } else {
+                request.getSession().setAttribute("message", "添加成功！");
             }
-            return new Result(true, "添加成功！");
         } catch (Exception e) {
-            e.printStackTrace();
-            return new Result(false, "添加失败！");
+            request.getSession().setAttribute("message", "添加失败！");
         }
+        return "redirect:/feiji/selectFeiJiXiangQing";
     }
 
     // 编辑飞机详情
-    @ResponseBody
     @RequestMapping("/editFeiJiXiangQing")
-    public Result editFeiJiXiangQing(FeiJiXiangQing feiJiXiangQing) {
+    public String editFeiJiXiangQing(FeiJiXiangQing feiJiXiangQing, HttpServletRequest request) {
         try {
+            System.out.println("这是编辑飞机详情里的feijixiangqing:"+feiJiXiangQing+"\n");
             Integer count = feiJiXiangQingService.editFeiJiXiangQing(feiJiXiangQing);
-            System.out.println("这是编辑飞机详情的方法,count的值是："+count);
             if (count != 1) {
-                return new Result(false, "编辑失败！");
+                System.out.println("这是第一个编辑失败");
+                request.getSession().setAttribute("message", "编辑失败！");
+            } else {
+                request.getSession().setAttribute("message", "编辑成功！");
             }
-            return new Result(true, "编辑成功！");
         } catch (Exception e) {
-            e.printStackTrace();
-            return new Result(false, "编辑失败！");
+            System.out.println("这是第二个编辑失败");
+            request.getSession().setAttribute("message", "编辑失败！");
         }
+        return "redirect:/feiji/selectFeiJiXiangQing";
     }
 
     // 添加飞机详情的页面
