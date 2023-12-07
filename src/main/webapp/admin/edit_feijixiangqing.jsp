@@ -11,6 +11,7 @@
 <head>
     <meta charset="utf-8">
     <title>编辑飞机详情</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/edit_feijixiangqing.css">
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 </head>
 <body>
@@ -18,10 +19,8 @@
 <div class="container">
     <h2>编辑飞机详情</h2>
     <form action="${editActionUrl}" method="post">
-<%--        <input type="hidden" name="xiangqingid" value="${param.xiangqingid}">--%>
-    <input type="hidden" name="xiangqingid" value="${FeiJiXiangQing.xiangqingid}">
-
-    <div class="form-group">
+        <input type="hidden" name="xiangqingid" value="${FeiJiXiangQing.xiangqingid}">
+        <div class="form-group">
             <label for="leixingid">类型ID:</label>
             <input type="text" class="form-control" id="leixingid" name="leixingid" value="${FeiJiXiangQing.leixingid}">
         </div>
@@ -51,4 +50,6 @@
 </div>
 </body>
 </html>
+
+
 

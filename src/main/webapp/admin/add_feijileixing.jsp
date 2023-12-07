@@ -10,6 +10,7 @@
 <head>
     <meta charset="utf-8">
     <title>添加飞机类型</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/add_feijileixing.css">
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 </head>
 <body>
@@ -25,9 +26,8 @@
             <textarea class="form-control" id="miaoshu" name="miaoshu"></textarea>
         </div>
         <button type="submit" class="btn btn-success">提交</button>
-        <a href="feijileixing_web.jsp" class="btn btn-default">取消</a>
+        <a href="${pageContext.request.contextPath}/feiji/selectFeiJiLeiXing" class="btn btn-default">取消</a>
     </form>
 </div>
 </body>
 </html>
-

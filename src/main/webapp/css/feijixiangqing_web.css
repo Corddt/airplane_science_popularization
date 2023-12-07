@@ -1,0 +1,127 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('../img/feijibizhi2.jpg'); /* Background image path */
+    background-size: cover;
+    color: #333;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin: 20px auto;
+    max-width: 900px;
+}
+
+h3.box-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 10px; /* 增加的上下内边距 */
+    margin: 10px; /* 增加外边距以提供更多的空间 */
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    font-size: 14px;
+    display: inline-block; /* 确保按钮可以应用padding和text-align */
+    text-align: center; /* 文本水平居中 */
+    line-height: 1.5; /* 这可以帮助确保在按钮内的文本垂直居中 */
+    vertical-align: middle; /* 这也可以帮助垂直居中 */
+}
+
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.btn-primary, .btn-edit {
+    background-color: #28a745; /* Green background */
+}
+
+.btn-primary:hover, .btn-edit:hover {
+    background-color: #218838;
+}
+
+.btn-danger, .btn-delete {
+    background-color: #dc3545; /* Red background */
+}
+
+.btn-danger:hover, .btn-delete:hover {
+    background-color: #c82333;
+}
+
+.btn-custom-padding {
+    padding-bottom: 0px; /* 或者您希望的任何其他值 */
+}
+
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.input-field {
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+}
+
+.table-box {
+    margin: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table .jianjie {
+    width: 35%; /* 或者其他您希望的百分比 */
+}
+
+
+table .caozuo {
+    width: 15%; /* 或者根据需要设置一个更大的百分比 */
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+.pagination {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.pagination a, .pagination span {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #ddd;
+    color: #333;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    background-color: #ccc;
+}
+

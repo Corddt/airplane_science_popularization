@@ -11,6 +11,7 @@
 <head>
     <meta charset="utf-8">
     <title>编辑飞机类型</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/add_feijileixing.css">
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 </head>
 <body>
@@ -33,3 +34,4 @@
 </div>
 </body>
 </html>
+

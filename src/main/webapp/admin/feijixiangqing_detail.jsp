@@ -11,6 +11,8 @@
 <html>
 <head>
     <title>飞机详情</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/feijixiangqing_detail.css">
+    <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 </head>
 <body>
 <div class="container">
@@ -28,7 +30,6 @@
     </div>
     <a href="${pageContext.request.contextPath}/feiji/feijixiangqingList" class="btn btn-primary">返回列表</a>
 </div>
-<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 </body>
 </html>
+

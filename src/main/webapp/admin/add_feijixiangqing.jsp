@@ -10,15 +10,14 @@
 <head>
     <meta charset="utf-8">
     <title>添加飞机详情</title>
-    <!-- 引入CSS和JS文件 -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/add_feijixiangqing.css">
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 </head>
 <body>
 <div class="container">
     <h2>添加飞机详情</h2>
     <form action="${pageContext.request.contextPath}/feiji/addFeiJiXiangQing" method="post" id="addFeiJiXiangQingForm">
-        <table class="table table-bordered table-striped">
-            <!-- 省略详情ID字段，因为添加操作通常不需要显示ID -->
+        <table class="table">
             <tr>
                 <td>类型ID</td>
                 <td><input class="form-control" name="leixingid"></td>
@@ -50,4 +49,3 @@
 </div>
 </body>
 </html>
-

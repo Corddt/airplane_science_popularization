@@ -1,6 +1,6 @@
 // 删除飞机类型
 function deleteType(id) {
-    var r = confirm("Are you sure you want to delete this aircraft type?");
+    var r = confirm("Delete this?");
     if (r) {
         var url = getProjectPath() + "/feiji/deleteFeiJiLeiXing?id=" + id;
         $.get(url, function (response) {
@@ -14,7 +14,7 @@ function deleteType(id) {
 
 // 删除飞机详情
 function deleteDetail(id) {
-    var r = confirm("确定要删除这个飞机详情吗？");
+    var r = confirm("Delete this?");
     if (r) {
         var url = getProjectPath() + "/feiji/deleteFeiJiXiangQing?id=" + id;
         $.get(url, function (response) {

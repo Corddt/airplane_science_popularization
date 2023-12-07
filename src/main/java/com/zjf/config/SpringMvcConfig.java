@@ -10,9 +10,7 @@ import java.util.List;
 
 @Configuration
 @PropertySource("classpath:ignoreUrl.properties")
-//等同于<context:component-scan base-package="com.itheima.controller"/>
 @ComponentScan({"com.zjf.controller"})
-/*@Import({MyWebMvcConfig.class})*/
 @EnableWebMvc
 public class SpringMvcConfig  implements WebMvcConfigurer {
     @Value("#{'${ignoreUrl}'.split(',')}")
@@ -28,8 +26,8 @@ public class SpringMvcConfig  implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor( resourcesInterceptor()).addPathPatterns("/**").excludePathPatterns("/css/**","/js/**","/img/**");
-        registry.addInterceptor( resourcesInterceptor()).excludePathPatterns("/**");
+        registry.addInterceptor( resourcesInterceptor()).addPathPatterns("/**").excludePathPatterns("/css/**","/js/**","/img/**");
+//        registry.addInterceptor( resourcesInterceptor()).excludePathPatterns("/**");
     }
 
     /*
