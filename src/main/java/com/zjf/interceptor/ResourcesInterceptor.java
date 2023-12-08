@@ -27,22 +27,22 @@ public class ResourcesInterceptor extends HandlerInterceptorAdapter {
             return true;
         }
 
-//        //如果用户是已登录状态，判断访问的资源是否有权限
-//        if (user != null) {
-//            //如果是管理员，放行
-//            if ("ADMIN".equals(user.getRole())) {
-//                return true;
-//            }
-//            //如果是普通用户
-//            else if (!"ADMIN".equals(user.getRole())) {
-//                for (String url : ignoreUrl) {
-//                    //访问的资源不是管理员权限的资源，放行
-//                    if (uri.indexOf(url) >= 0) {
-//                        return true;
-//                    }
-//                }
-//            }
-//        }
+        //如果用户是已登录状态，判断访问的资源是否有权限
+        if (user != null) {
+            //如果是管理员，放行
+            if ("ADMIN".equals(user.getRole())) {
+                return true;
+            }
+            //如果是普通用户
+            else if (!"ADMIN".equals(user.getRole())) {
+                for (String url : ignoreUrl) {
+                    //访问的资源不是管理员权限的资源，放行
+                    if (uri.indexOf(url) >= 0) {
+                        return true;
+                    }
+                }
+            }
+        }
         //对用户登录的相关请求，放行
         if (uri.indexOf("login") >= 0) {
             return true;
