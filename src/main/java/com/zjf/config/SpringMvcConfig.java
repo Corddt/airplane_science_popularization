@@ -21,8 +21,6 @@ public class SpringMvcConfig  implements WebMvcConfigurer {
     }
     /*
      * 在注册的拦截器类中添加自定义拦截器
-     * addPathPatterns()方法设置拦截的路径
-     * excludePathPatterns()方法设置不拦截的路径
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -32,7 +30,6 @@ public class SpringMvcConfig  implements WebMvcConfigurer {
 
     /*
      *开启对静态资源的访问
-     * 类似在Spring MVC的配置文件中设置<mvc:default-servlet-handler/>元素
      */
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {

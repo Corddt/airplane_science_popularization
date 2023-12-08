@@ -38,9 +38,8 @@ public class FeiJiController {
     // 分页查询飞机类型
     @RequestMapping("/selectFeiJiLeiXing")
     public ModelAndView selectFeiJiLeiXing(Integer pageNum, Integer pageSize, HttpServletRequest request) {
-        if (pageNum == null || pageNum < 1) pageNum = 1; // 确保pageNum不小于1
-        if (pageSize == null || pageSize < 1) pageSize = 10; // 确保pageSize有默认值
-
+        if (pageNum == null || pageNum < 1) pageNum = 1;
+        if (pageSize == null || pageSize < 1) pageSize = 10;
         PageResult pageResult = feiJiLeiXingService.selectFeiJiLeiXing(pageNum, pageSize);
         long total = pageResult.getTotal(); // 总记录数
         long totalPages = (total + pageSize - 1) / pageSize; // 计算总页数

@@ -1,9 +1,6 @@
 package com.zjf.entity;
 import java.io.Serializable;
 
-/**
- * 用于向页面传递信息的类
- */
 public class Result<T> implements Serializable{
 	private boolean success; //是否成功操作成功
 	private String message; //需要传递的信息

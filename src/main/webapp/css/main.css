@@ -57,6 +57,10 @@ body {
     display: flex;
     align-items: center;
 }
+.user-item span {
+    color: white;
+}
+
 
 .user-image {
     border-radius: 50%;

@@ -10,7 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
- * 用户登录和注销Controller
+ * 名称:UserController
+ * 描述:
+ *
+ * @version 1.0
+ * @author:zjf
+ * @datatime:2023-12-03 12:17
  */
 @Controller
 public class UserController {

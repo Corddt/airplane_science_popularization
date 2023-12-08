@@ -20,17 +20,12 @@ import javax.sql.DataSource;
  */
 @ComponentScan("com.zjf.service")
 /*开启事务管理
-等同于<tx:annotation-driven transaction-manager="transactionManager"/>
  */
 @EnableTransactionManagement
 public class SpringConfig {
-    /*
-    等同于<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-     */
     @Bean("transactionManager")
     public DataSourceTransactionManager getDataSourceTxManager(@Autowired DataSource dataSource){
         DataSourceTransactionManager dtm = new DataSourceTransactionManager();
-        //等同于<property name="dataSource" ref="dataSource"/>
         dtm.setDataSource(dataSource);
         return dtm;
     }
