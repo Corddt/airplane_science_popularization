@@ -42,7 +42,6 @@
             <artifactId>mybatis</artifactId>
             <version>3.5.2</version>
         </dependency>
-        <!--MyBatis的分页插件-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper</artifactId>
@@ -110,7 +109,6 @@
 
 
         <!--日志开始-->
-        <!--引入日志的门脸-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>

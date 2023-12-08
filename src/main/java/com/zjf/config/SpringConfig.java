@@ -11,16 +11,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 
 @Configuration
-/*
-将MyBatisConfig类和JdbcConfig类交给Spring管理
- */
 @Import({MyBatisConfig.class,JdbcConfig.class})
-/**
- *等同于<context:component-scan base-package="com.zjf.service">
- */
 @ComponentScan("com.zjf.service")
-/*开启事务管理
- */
 @EnableTransactionManagement
 public class SpringConfig {
     @Bean("transactionManager")

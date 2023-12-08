@@ -18,13 +18,10 @@ import org.springframework.stereotype.Service;
 @Service
 @Primary
 public class UserServiceImpl  implements UserService {
-    //注入userMapper
     @Autowired(required = false)
     private UserMapper userMapper;
-    //通过User的用户账号和用户密码查询用户信息
     @Override
     public User login(User user) {
-        System.out.println("这是user实现类的登录操作");
         return userMapper.login(user);
     }
 }

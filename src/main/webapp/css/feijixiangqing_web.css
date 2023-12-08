@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-image: url('../img/feijibizhi2.jpg'); /* Background image path */
+    background-image: url('../img/feijibizhi2.jpg');
     background-size: cover;
     color: #333;
 }
@@ -29,16 +29,16 @@ h3.box-title {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 12px 10px; /* 增加的上下内边距 */
-    margin: 10px; /* 增加外边距以提供更多的空间 */
+    padding: 12px 10px;
+    margin: 10px;
     border-radius: 4px;
     text-decoration: none;
     transition: background-color 0.3s;
     font-size: 14px;
-    display: inline-block; /* 确保按钮可以应用padding和text-align */
-    text-align: center; /* 文本水平居中 */
-    line-height: 1.5; /* 这可以帮助确保在按钮内的文本垂直居中 */
-    vertical-align: middle; /* 这也可以帮助垂直居中 */
+    display: inline-block;
+    text-align: center;
+    line-height: 1.5;
+    vertical-align: middle;
 }
 
 
@@ -47,7 +47,7 @@ h3.box-title {
 }
 
 .btn-primary, .btn-edit {
-    background-color: #28a745; /* Green background */
+    background-color: #28a745;
 }
 
 .btn-primary:hover, .btn-edit:hover {
@@ -55,7 +55,7 @@ h3.box-title {
 }
 
 .btn-danger, .btn-delete {
-    background-color: #dc3545; /* Red background */
+    background-color: #dc3545;
 }
 
 .btn-danger:hover, .btn-delete:hover {
@@ -63,7 +63,7 @@ h3.box-title {
 }
 
 .btn-custom-padding {
-    padding-bottom: 0px; /* 或者您希望的任何其他值 */
+    padding-bottom: 0px;
 }
 
 
@@ -89,14 +89,13 @@ table {
 }
 
 table .jianjie {
-    width: 35%; /* 或者其他您希望的百分比 */
+    width: 35%;
 }
 
 
 table .caozuo {
-    width: 15%; /* 或者根据需要设置一个更大的百分比 */
+    width: 15%;
 }
-
 th, td {
     border: 1px solid #ddd;
     padding: 8px;
